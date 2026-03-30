@@ -77,7 +77,8 @@
               "buildTarget": "Fresh-Cart:build:production"
             },
             "development": {
-              "buildTarget": "Fresh-Cart:build:development"
+              "buildTarget": "Fresh-Cart:build:development",
+              "hmr": true
             }
           },
           "defaultConfiguration": "development"
