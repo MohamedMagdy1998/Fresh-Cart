@@ -1,7 +1,7 @@
 <nav class="bg-gray-200 border-gray-200 ">
     <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto py-3 px-4">
         <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="assets/images/freshcart-logo.svg" class="cursor-pointer h-7 mx-2" alt="fresh cart logo" />
+            <img src="assets/images/freshcart-logo.svg" class="cursor-pointer" alt="fresh cart logo" />
         </a>
 
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -11,37 +11,49 @@
             </svg>
         </button>
 
-        <div class="hidden w-full md:flex md:w-auto items-center   flex-grow" id="navbar-default">
+        <div class=" w-full md:flex md:w-auto items-center   flex-grow" id="navbar-default">
 
 
-          
-
+            
             <ul class="capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0">
                 <li>
-                    <a routerLink="home" routerLinkActive="text-white bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">home</a>
+                    <a routerLink="/home" routerLinkActive="text-white bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">home</a>
                 </li>
 
 
 
 
                 <li>
-                    <a routerLink="products" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">products</a>
+                    <a routerLink="/products" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">products</a>
                 </li>
 
 
 
                 <li>
-                    <a routerLink="categories" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">categories</a>
+                    <a routerLink="/categories" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">categories</a>
                 </li>
 
 
 
                 <li>
-                    <a routerLink="brands" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">brands</a>
+                    <a routerLink="/brands" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">brands</a>
                 </li>
+
+                   @if (isLoggedIn) 
+                   {
+                        <li>
+                            <a routerLink="/cart"
+                            routerLinkActive="text-white bg-green-400 p-2"
+                            class="block py-2 px-3 text-gray-800 rounded-xl">
+                            cart
+                            </a>
+                        </li>
+                  }
 
 
             </ul>
+
+
 
 
             <ul class="capitalize items-center flex ms-auto flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0">
@@ -64,6 +76,45 @@
                 <li>
                     <a href="https://www.youtube.com/" target="_blank" class="block py-2 px-3 text-red-700 rounded-xl  " aria-current="page"><i class="fab fa-youtube text-xl fw-bolder"></i></a>
                 </li>
+
+
+                @if (!isLoggedIn)
+                {
+                <li>
+                    <a routerLink="/login" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">login</a>
+                </li>
+
+                <li>
+                    <a routerLink="/register" routerLinkActive="text-white  bg-green-400 p-2" class="block py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">register</a>
+                </li>
+                }
+                @else
+                {
+                <li>
+                    <a routerLink="/cart" routerLinkActive="text-blue-900 text-xl p-2 " class="relative block py-2 px-3 text-gray-800 rounded  " aria-current="page"> <i class="fas fa-shopping-cart fa-2xl"></i>
+                        <span class="absolute top-0 start-1/4 text-white text-sm bg-red-600 rounded-md px-1 ">Cart</span>
+                    </a>
+                </li>
+
+
+
+
+                <li>
+                    <a  (click)="authService.logOut()" routerLinkActive="text-white  bg-green-400 p-2" role="button"  class="block  py-2 px-3 text-gray-800 rounded-xl  " aria-current="page">logout</a>
+                </li>
+                }
+
+
+
+
+
+
+
+
+
+
+
+
 
             </ul>
 
